@@ -5,10 +5,10 @@ Helpers.createEl = function (tagName, target, params) {
     var el = document.createElement(tagName);
     if (params) {
         Object.keys(params).forEach(function (key) {
-            if (el[key] === undefined) {
-                el.setAttribute(key, params[key]);
-            } else {
+            if (key in el) {
                 el[key] = params[key];
+            } else {
+                el.setAttribute(key, params[key]);
             }
         })
     }
